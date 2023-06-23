@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href = "/data_create">Home</a>
+<h3>Final Report</h3>
+    <hr>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Is_CEO</th>
+                    <th>Position</th>
+                    <th>Report_to</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                {% for data in  data_read %}
+
+                <tr>
+                    <td>{{data.name}}</td>
+                    <td>{{data.phone}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.is_ceo}}</td>
+                    <td>{{data.position}}</td>
+                    <td>{{data.b}}</td>
+                    <td>
+                        <a href="delete/{{data.id}}">Delete</a>
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+{% endblock %}
+

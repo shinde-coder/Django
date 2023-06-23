@@ -1,0 +1,14 @@
+li a {
+    position: relative;
+    color: red;
+    text-decoration: none;
+    z-index: 1;
+}
+
+
+body {
+    background: white url("images/background.gif") no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

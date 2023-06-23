@@ -1,0 +1,16 @@
+<form method="post">
+
+{% csrf_token %}
+
+{% if error %} 
+<div>plz enter the value</div>
+{% endif %}
+<label>Enter value</label>
+<input type="text" name="even_odd"><br>
+
+<button type="submit">Submit</button><br>
+
+<label>output</label><br>
+<input type="text" value = {{c}}>
+
+</form>

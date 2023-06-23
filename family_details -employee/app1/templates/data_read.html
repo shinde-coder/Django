@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<a href="/data_create" style="color: blue; text-decoration: none; padding: 10px 20px; border: 1px solid blue; border-radius: 10px;">Home</a>     
+<h3 style="color: navy; font-size: 24px; font-weight: bold; ">List of Family Members</h3>
+    <hr>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>EID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Is_head</th>
+                    <th>relation</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                {% for data in  data_read %}
+
+                <tr>
+
+                    <td>{{data.user.id}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.age}}</td>
+                    <td>{{data.gender}}</td>
+                    <td>{{data.is_head}}</td>
+                    <td>{{data.relation}}</td>
+                    <td style="text-align:center;">
+                        <a href="data_edit/{{data.id}}" style="background-color: blue; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Edit</a>
+                        <a href="delete/{{data.id}}" style="background-color: red; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Delete</a>
+                    </td>
+                    
+                    
+                </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <div style="display: flex; justify-content: space-between; padding: 10px;margin-right: 49em;">
+                <button type="submit" style="background-color: yellow; color: black; font-size: 15px; padding: 10px;">
+                  <a href="/data_create" style="text-decoration: none; color: black;">Add Family Member</a>
+                </button>
+                <div style="width: 20px;"></div>
+                <button type="submit" style="background-color: #90EE90; color: black; font-size: 15px; padding: 10px;">
+                  <a href="/employes_list" style="text-decoration: none; color: black;">Total Registration List</a>
+                </button>
+              </div>
+           
+        </div>
+{% endblock %}
+

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div >
+    <h3>ADD EMPLOYEE</h3>
+    <hr>
+    <form method = "POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <div>
+            <button type = "submit" >Submit</button> 
+            <button type = "reset" >reset</button> 
+            <a href = "data_read" >List All</a>
+        </div>
+        
+    </form>
+
+</div>
+{% endblock %}

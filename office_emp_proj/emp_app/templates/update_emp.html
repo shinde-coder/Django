@@ -1,0 +1,43 @@
+<!-- update_emp.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Employee</title>
+</head>
+<body>
+    <h1>Update Employee</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" value="{{ employee.first_name }}" required><br><br>
+        
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" value="{{ employee.last_name }}" required><br><br>
+        
+        <label for="salary">Salary:</label>
+        <input type="number" id="salary" name="salary" value="{{ employee.salary }}" required><br><br>
+        
+        <label for="bonus">Bonus:</label>
+        <input type="number" id="bonus" name="bonus" value="{{ employee.bonus }}" required><br><br>
+        
+        <label for="phone">Phone:</label>
+        <input type="number" id="phone" name="phone" value="{{ employee.phone }}" required><br><br>
+        
+        <label for="dept">Department:</label>
+        <select id="dept" name="dept" required>
+            {% for department in departments %}
+                <option value="{{ department.id }}" {% if department.id == employee.dept_id %}selected{% endif %}>{{ department.name }}</option>
+            {% endfor %}
+        </select><br><br>
+        
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            {% for role in roles %}
+                <option value="{{ role.id }}" {% if role.id == employee.role_id %}selected{% endif %}>{{ role.name }}</option>
+            {% endfor %}
+        </select><br><br>
+        
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</body>
+</html>

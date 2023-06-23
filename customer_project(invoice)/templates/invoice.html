@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+        /* Add your desired CSS styling for the invoice here */
+        /* Example styles */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .invoice-details {
+            margin-bottom: 20px;
+        }
+        .invoice-details p {
+            margin: 0;
+        }
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .invoice-table th,
+        .invoice-table td {
+            padding: 8px;
+            border: 1px solid #000;
+        }
+        .invoice-total {
+            margin-top: 20px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <h1>Invoice</h1>
+    <div class="invoice-details">
+        <p><strong>Customer Name:</strong> {{ customer.name }}</p>
+        <p><strong>Mobile Number:</strong> {{ customer.mobile_number }}</p>
+        <p><strong>Address:</strong> {{ customer.address }}</p>
+        <p><strong>Test:</strong> {{ customer.test }}</p>
+        <p><strong>Amount:</strong> {{ customer.amount }}</p>
+        <p><strong>Created At:</strong> {{ customer.created_at }}</p>
+        <p><strong>Updated At:</strong> {{ customer.updated_at }}</p>
+        <p><strong>Created By:</strong> {{ customer.created_by }}</p>
+        <p><strong>Updated By:</strong> {{ customer.updated_by }}</p>
+    </div>
+    <table class="invoice-table">
+        <thead>
+            <tr>
+                <th>Test</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in test_list %}
+                <tr>
+                    <td>{{ item }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td><strong>Amount:</strong></td>
+                <td>{{ customer.amount }}</td>
+            </tr>
+        </tbody>
+        
+    </table>
+    <div class="invoice-total">
+        <p><strong>Total Amount:</strong> {{ customer.amount }}</p>
+    </div>
+</body>
+</html>

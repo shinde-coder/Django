@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div >
+    <h3>ADD Customer</h3>
+    <hr>
+    <form method = "POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <div>
+            <button type="submit" style="background-color: blue; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Submit</button> 
+            <button type="reset" style="background-color: GREY; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Reset</button> 
+            <a href="data_read" style="color: black; text-decoration: none;padding: 10px 20px; border: 1px solid blue; border-radius: 10px; margin-left: 10px;">List All</a>
+        </div>
+        <br>
+        <br>
+    </form>
+</div>
+{% endblock %}

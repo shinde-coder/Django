@@ -1,0 +1,90 @@
+virtual environment creation
+-> python -m venv env
+-> env\Scripts\activate
+-> pip install django
+-------------------------------------------------------
+template doesnot exit
+-> 'DIRS': [os.path.join(BASE_DIR, 'templates')], or 'DIRS': [BASE_DIR/'templates']
+--------------------------------------------------------
+base.html                         
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+	-> {% include "partials/nav.html" %}
+
+index.html
+
+	{% extends 'partials/base.html' %}
+	{% block content %}
+	<h1>Shinde</h1>
+	{% endblock %}
+------------------------------------------------------------------------------------------------------------------------
+Filtering
+
+from django.db.models import Q
+# Create your views here.
+
+def index(request):
+    if "q" in request.GET:
+        q = request.GET['q']
+        multipleQ = Q(Q(first_name__icontains=q)|Q(last_name__icontains=q)|Q(age__icontains=q))
+        obj = Data.objects.filter(multipleQ)
+    else:
+        obj = Data.objects.all()
+    return render(request,"dashboard/index.html",{"obj":obj})
+-------------------------------------------------------------------------------------------------------------------------
+Working with django API
+-> python manage.py shell
+-> from app1.models import Question, Choice
+-> Question.objects.all()
+-> from django.utils import timezone
+-> q = Question(question_text="what's new", pub_text = timezone.now())
+-> q.save()
+now you can do manupulations on the added query
+-> q.id, -> q.question_text -> q.pub_text
+-> d = q.choice_set.filter(choice_text__startswith="hello")
+-> d.delete()
+-------------------------------------------------------------------------------------------------------------------------
+static
+
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILE_DIRS ='/users/edchigliak/documents/projects/projectname/appname/static/'
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+at urls.py
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+------------------------------------------------------------------------------------------------------------------------
+for getting values from the frontend
+
+-> var1 = request.GET['num1']-----here the num1 is taken from the forms.py
+-> var1 = request.POST['num1']---------->>> Always remember is you want to fetch data use GET and to submit data use POST
+------------------------------------------------------------------------------------------------------------------------
+url routing(rest frameworks)
+
+from app1 import views 
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register('api', views.StudentViewSet, basename='student') --------------> here api is the endpoint
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", include(router.urls))
+]
+------------------------------------------------------------------------------------------------------------------------

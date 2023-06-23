@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h3>ADD Questions</h3>
+    <hr>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <button type="submit" style="background-color: blue; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Submit</button> 
+            <button type="reset" style="background-color: GREY; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Reset</button> 
+        </div>
+        <br>
+    </form>
+</div>
+{% endblock %}
